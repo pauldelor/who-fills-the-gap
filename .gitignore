@@ -1,0 +1,24 @@
+# Raw and interim data — too large for git, must be re-downloaded
+data/raw/
+data/interim/
+
+# Virtual environment
+.venv/
+
+# Python cache files
+__pycache__/
+*.pyc
+*.pyo
+
+# Jupyter checkpoint files
+.ipynb_checkpoints/
+
+# Environment variable files — may contain API keys or secrets
+.env
+
+# macOS system files
+.DS_Store
+
+# Editor / IDE files
+.vscode/
+*.swp

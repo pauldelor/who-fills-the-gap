@@ -1,0 +1,10 @@
+pandas
+requests
+numpy
+matplotlib
+seaborn
+plotly
+geopandas
+jupyter
+python-dotenv
+wbdata
