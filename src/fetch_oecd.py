@@ -201,9 +201,16 @@ def extract_csv_from_zip(zip_bytes: bytes, year: int) -> Optional[pd.DataFrame]:
             print(f"[{year}] Reading '{target_file}'...", flush=True)
 
             with zf.open(target_file) as f:
-                # Try comma separator first (standard CSV)
-                # The OECD dotStat format uses commas
-                df = pd.read_csv(f, encoding="utf-8", low_memory=False)
+                # OECD dotStat bulk files use PIPE (|) as delimiter.
+                # The header row has quoted column names; data rows are unquoted.
+                # on_bad_lines='warn' skips malformed rows instead of crashing.
+                df = pd.read_csv(
+                    f,
+                    sep="|",
+                    encoding="utf-8",
+                    low_memory=False,
+                    on_bad_lines="warn",
+                )
 
         print(f"[{year}] Raw data: {len(df):,} rows × {len(df.columns)} columns")
         return df
